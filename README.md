@@ -247,40 +247,6 @@ Each sample is a JSON object:
 }
 ```
 
----
-
-## Baseline Methods
-
-Four baseline implementations are provided for benchmarking:
-
-```bash
-# Rule-based thresholding (reactive, clause-level)
-python baselines/baseline_rule_based.py --test data/real_trace_dataset/test.json
-
-# DBSCAN clustering (unsupervised, binary only)
-python baselines/baseline_dbscan.py --train data/real_trace_dataset/train.json \
-                                     --test data/real_trace_dataset/test.json
-
-# LEAD-Drift MLP (proactive, binary only)
-python baselines/baseline_lead_drift.py --train data/real_trace_dataset/train.json \
-                                         --test data/real_trace_dataset/test.json
-
-# Random Forest (proactive, clause-level)
-python baselines/baseline_random_forest.py --train data/real_trace_dataset/train.json \
-                                            --test data/real_trace_dataset/test.json
-```
-
-### Rebuilding with Different Parameters
-
-To generate datasets with different window sizes or horizons without re-running Mininet:
-
-```bash
-# Generate all sensitivity variants from raw snapshots
-python rebuild_from_raw.py --batch
-
-# Or generate a specific variant
-python rebuild_from_raw.py --window-size 5 --horizon 3 --suffix _T5
-```
 
 ---
 
@@ -316,20 +282,7 @@ print(f"Normal: {normal} ({normal/(normal+drift):.1%}), Drift: {drift} ({drift/(
 # Expected: Normal ~70-80%, Drift ~20-30%
 ```
 
----
 
-## Citation
-
-If you use this dataset or code, please cite:
-
-```bibtex
-@inproceedings{ibn-drift2026,
-  title={IBN-Drift: A Reusable Benchmark Dataset for Multi-Dimensional Intent Drift in Intent-Based Network Management Systems},
-  author={[Authors]},
-  booktitle={Proceedings of the IEEE International Conference on Software Maintenance and Evolution (ICSME)},
-  year={2026}
-}
-```
 
 ---
 
